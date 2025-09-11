@@ -1,5 +1,5 @@
 
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { HashRouter as Router, Routes, Route } from 'react-router-dom';
 import { Navbar } from './components';
 import { Home, About, Services, Contact } from './pages';
 
@@ -44,10 +44,10 @@ function App() {
               <div>
                 <h3 className="text-xl font-semibold mb-4">Quick Links</h3>
                 <div className="space-y-2">
-                  <a href="/about" className="block text-gray-300 hover:text-white transition-colors">About</a>
-                  <a href="/services" className="block text-gray-300 hover:text-white transition-colors">Services</a>
-                  <a href="/contact" className="block text-gray-300 hover:text-white transition-colors">Contact</a>
-                  <a href="/contact" className="block text-primary hover:text-primary-300 transition-colors">Free Consultation</a>
+                  <a href="#/about" className="block text-gray-300 hover:text-white transition-colors">About</a>
+                  <a href="#/services" className="block text-gray-300 hover:text-white transition-colors">Services</a>
+                  <a href="#/contact" className="block text-gray-300 hover:text-white transition-colors">Contact</a>
+                  <a href="#/contact" className="block text-primary hover:text-primary-300 transition-colors">Free Consultation</a>
                 </div>
               </div>
 
