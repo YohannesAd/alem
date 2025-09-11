@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Alem Asefa Counseling Website
 
 A professional, responsive counseling website built with React, TypeScript, and Tailwind CSS for Alem Asefa, Licensed Clinical Professional Counselor (MS, LCPC).
@@ -205,3 +206,6 @@ This project is proprietary and confidential. All rights reserved.
 ---
 
 Built with ❤️ for mental health and wellness
+=======
+# alem
+>>>>>>> 480c65d831d109217a00733c8238af1ae376844a
