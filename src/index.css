@@ -1,0 +1,204 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&family=Open+Sans:wght@300;400;600;700&family=Poppins:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    font-family: 'Lato', 'Open Sans', 'Poppins', system-ui, sans-serif;
+    height: 100%;
+    overflow-x: hidden;
+    /* Prevent elastic/bounce scrolling */
+    overscroll-behavior: none;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  body {
+    @apply bg-white text-text antialiased;
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    min-height: 100vh;
+    overflow-x: hidden;
+    position: relative;
+    /* Prevent elastic/bounce scrolling */
+    overscroll-behavior: none;
+    overscroll-behavior-y: none;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  #root {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    /* Prevent elastic/bounce scrolling */
+    overscroll-behavior: none;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply text-text font-semibold leading-tight;
+  }
+
+  h1 {
+    @apply text-4xl md:text-5xl;
+  }
+
+  h2 {
+    @apply text-3xl md:text-4xl;
+  }
+
+  h3 {
+    @apply text-2xl md:text-3xl;
+  }
+
+  p {
+    @apply text-text leading-relaxed;
+  }
+
+  a {
+    @apply text-primary hover:text-primary-600 transition-colors duration-200;
+  }
+
+  /* Global prevention of elastic/bounce scrolling */
+  * {
+    overscroll-behavior: none;
+  }
+
+  /* Specific prevention for common scroll containers */
+  main, section, div {
+    overscroll-behavior-y: none;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply bg-primary hover:bg-primary-600 text-white font-medium py-3 px-6 rounded-lg transition-all duration-200 shadow-md hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-primary-300 focus:ring-offset-2;
+  }
+
+  .btn-secondary {
+    @apply bg-secondary hover:bg-secondary-400 text-text font-medium py-3 px-6 rounded-lg transition-all duration-200 border border-primary-200 hover:border-primary-300 focus:outline-none focus:ring-2 focus:ring-primary-300 focus:ring-offset-2;
+  }
+
+  .container-custom {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+    max-width: min(1280px, 100vw);
+  }
+
+  /* Mobile-optimized button styles */
+  .btn-primary {
+    @apply text-sm sm:text-base px-4 py-2 sm:px-6 sm:py-3;
+  }
+
+  .btn-secondary {
+    @apply text-sm sm:text-base px-4 py-2 sm:px-6 sm:py-3;
+  }
+}
+
+@layer utilities {
+  /* Prevent horizontal overflow and ensure proper layout */
+  .prevent-overflow {
+    max-width: 100vw;
+    overflow-x: hidden;
+    /* Prevent elastic/bounce scrolling */
+    overscroll-behavior: none;
+    overscroll-behavior-y: none;
+  }
+
+  /* Ensure proper viewport behavior */
+  .full-height {
+    min-height: 100vh;
+    height: auto;
+  }
+
+  /* Smooth transitions for layout changes */
+  .layout-transition {
+    transition: all 0.3s ease-in-out;
+  }
+
+  /* Prevent elastic scrolling on all elements */
+  .no-bounce {
+    overscroll-behavior: none;
+    overscroll-behavior-y: none;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  /* Fixed positioning for sticky behavior */
+  .fixed-layout {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    overflow-y: auto;
+    overscroll-behavior: none;
+  }
+}
+
+/* Prevent elastic scrolling on mobile devices */
+@media (max-width: 768px) {
+  html {
+    position: fixed;
+    height: 100%;
+    overflow: hidden;
+  }
+
+  body {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    overflow: hidden;
+  }
+
+  #root {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior: none;
+  }
+}
+
+/* For desktop, just prevent overscroll */
+@media (min-width: 769px) {
+  html, body, #root {
+    overscroll-behavior: none;
+    overscroll-behavior-y: none;
+  }
+}
+
+/* Mobile touch optimizations */
+@media (max-width: 768px) {
+  /* Improve touch targets */
+  button, a, input, textarea {
+    min-height: 44px;
+    min-width: 44px;
+  }
+
+  /* Better text sizing for mobile */
+  body {
+    font-size: 16px;
+    line-height: 1.5;
+  }
+
+  /* Prevent zoom on input focus */
+  input, textarea, select {
+    font-size: 16px;
+  }
+
+  /* Optimize spacing for mobile */
+  .container-custom {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  /* Better mobile card spacing */
+  .bg-secondary, .bg-primary-50, .bg-accent-50 {
+    margin-bottom: 1rem;
+  }
+}
