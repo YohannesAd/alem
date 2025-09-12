@@ -1,12 +1,13 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import alemPhoto from '../assets/alem.jpeg';
 
 /**
  * About page component for Alem Asefa's counseling website
  * Features professional background, credentials, and approach
  */
 const About: React.FC = () => {
+  const [imageError, setImageError] = useState(false);
+
   return (
     <div className="min-h-screen py-12 sm:py-16 lg:py-20 flex flex-col">
       <div className="container-custom">
@@ -27,11 +28,27 @@ const About: React.FC = () => {
           <div className="order-2 lg:order-1">
             <div className="bg-secondary rounded-lg p-8 flex items-center justify-center">
               <div className="text-center">
-                <img
-                  src={alemPhoto}
-                  alt="Alem Asefa, Licensed Clinical Professional Counselor"
-                  className="w-80 h-80 object-cover rounded-lg shadow-lg mx-auto"
-                />
+                {!imageError ? (
+                  <img
+                    src="/alem.jpeg"
+                    alt="Alem Asefa, Licensed Clinical Professional Counselor"
+                    className="w-80 h-80 object-cover rounded-lg shadow-lg mx-auto"
+                    onError={() => setImageError(true)}
+                    onLoad={() => console.log('Image loaded successfully')}
+                  />
+                ) : (
+                  <div className="w-80 h-80 bg-primary-100 rounded-lg shadow-lg mx-auto flex items-center justify-center">
+                    <div className="text-center">
+                      <div className="w-20 h-20 bg-primary rounded-full mx-auto mb-4 flex items-center justify-center">
+                        <svg className="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                        </svg>
+                      </div>
+                      <p className="text-text font-medium">Alem Asefa, MS, LCPC</p>
+                      <p className="text-text-light text-sm">Licensed Clinical Professional Counselor</p>
+                    </div>
+                  </div>
+                )}
               </div>
             </div>
           </div>
