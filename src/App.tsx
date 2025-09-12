@@ -1,9 +1,9 @@
 
-import { HashRouter as Router, Routes, Route, Navigate, Link } from 'react-router-dom';
+import { HashRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import { Navbar } from './components';
 import { Home, About, Services, Contact } from './pages';
 import { useEffect } from 'react';
-import { useScrollToTop, scrollToTop } from './hooks';
+import { useScrollToTop } from './hooks';
 
 /**
  * Component to handle redirect to hash route if no hash is present
@@ -33,7 +33,7 @@ function App() {
   return (
     <>
       <HashRedirect />
-      <Router future={{ v7_startTransition: true }}>
+      <Router>
         <ScrollToTopWrapper>
           <div className="min-h-screen bg-white flex flex-col prevent-overflow no-bounce">
           {/* Navigation */}
@@ -161,7 +161,7 @@ function App() {
             </div>
           </div>
         </footer>
-          </div>
+        </div>
         </ScrollToTopWrapper>
       </Router>
     </>
