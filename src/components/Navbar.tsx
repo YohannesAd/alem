@@ -130,13 +130,13 @@ const Navbar: React.FC<NavbarProps> = ({ className = '' }) => {
 
       {/* Mobile Navigation Menu */}
       <div className={`md:hidden ${isMenuOpen ? 'block' : 'hidden'}`}>
-        <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-secondary border-t border-primary-100">
+        <div className="mobile-menu px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-secondary border-t border-primary-100">
           {navigation.map((item) => (
             <Link
               key={item.name}
               to={item.href}
               onClick={closeMobileMenu}
-              className={`block px-3 py-2 text-base font-medium transition-colors duration-200 ${
+              className={`block px-3 py-2 text-sm font-medium transition-colors duration-200 ${
                 isCurrentPage(item.href)
                   ? 'text-primary bg-primary-50 border-l-4 border-primary'
                   : 'text-text hover:text-primary hover:bg-primary-50'
@@ -146,13 +146,13 @@ const Navbar: React.FC<NavbarProps> = ({ className = '' }) => {
               {item.name}
             </Link>
           ))}
-          
+
           {/* Mobile CTA Button */}
-          <div className="px-3 py-2">
+          <div className="px-3 py-2 flex justify-center">
             <Link
               to="/contact"
               onClick={closeMobileMenu}
-              className="btn-primary w-full text-center block text-sm"
+              className="btn-primary text-center text-xs px-4 py-2 min-w-0 w-auto"
               aria-label="Schedule your free 15-minute consultation"
             >
               Free Consultation

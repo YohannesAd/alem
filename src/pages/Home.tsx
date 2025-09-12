@@ -21,17 +21,18 @@ const Home: React.FC = () => {
               Evidence-based therapy to help you feel less "stuck", gain insight, and learn healthier
               ways of adapting and problem solving.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-center">
               <Link
                 to="/contact"
-                className="btn-primary text-lg px-8 py-4"
+                className="btn-primary text-xs sm:text-sm lg:text-base px-3 py-2 sm:px-6 sm:py-3 lg:px-8 lg:py-4 w-full sm:w-auto max-w-xs"
                 aria-label="Schedule your free 15-minute consultation"
               >
-                Free 15-Minute Consultation
+                <span className="block sm:inline">Free 15-Minute</span>
+                <span className="block sm:inline sm:ml-1">Consultation</span>
               </Link>
               <Link
                 to="/about"
-                className="btn-secondary text-lg px-8 py-4"
+                className="btn-secondary text-xs sm:text-sm lg:text-base px-3 py-2 sm:px-6 sm:py-3 lg:px-8 lg:py-4 w-full sm:w-auto max-w-xs"
               >
                 Learn About Me
               </Link>
@@ -107,7 +108,7 @@ const Home: React.FC = () => {
             </p>
             <Link
               to="/contact"
-              className="btn-primary text-lg px-8 py-4"
+              className="btn-primary text-xs sm:text-sm lg:text-base px-4 py-2 sm:px-6 sm:py-3 lg:px-8 lg:py-4"
               aria-label="Schedule your free 15-minute consultation"
             >
               Get Started Today
