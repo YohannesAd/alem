@@ -224,10 +224,11 @@ const Services: React.FC = () => {
           </p>
           <Link
             to="/contact"
-            className="bg-white text-primary hover:bg-secondary font-medium py-3 px-8 rounded-lg transition-all duration-200 shadow-md hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-primary"
+            className="bg-white text-primary hover:bg-secondary font-medium py-3 px-4 sm:px-6 lg:px-8 rounded-lg transition-all duration-200 shadow-md hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-primary text-sm sm:text-base lg:text-lg max-w-xs sm:max-w-none mx-auto inline-flex items-center justify-center"
             aria-label="Schedule your free 15-minute consultation"
           >
-            Schedule Free Consultation
+            <span className="block sm:inline">Schedule Free</span>
+            <span className="block sm:inline sm:ml-1">Consultation</span>
           </Link>
         </div>
       </div>

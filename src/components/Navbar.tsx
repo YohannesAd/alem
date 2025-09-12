@@ -75,7 +75,7 @@ const Navbar: React.FC<NavbarProps> = ({ className = '' }) => {
           <div className="hidden md:block">
             <Link
               to="/contact"
-              className="btn-primary"
+              className="btn-primary text-sm lg:text-base"
               aria-label="Schedule your free 15-minute consultation"
             >
               Free Consultation
@@ -152,7 +152,7 @@ const Navbar: React.FC<NavbarProps> = ({ className = '' }) => {
             <Link
               to="/contact"
               onClick={closeMobileMenu}
-              className="btn-primary w-full text-center block"
+              className="btn-primary w-full text-center block text-sm"
               aria-label="Schedule your free 15-minute consultation"
             >
               Free Consultation

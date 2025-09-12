@@ -179,10 +179,11 @@ const About: React.FC = () => {
           </p>
           <Link
             to="/contact"
-            className="btn-primary text-lg px-8 py-4"
+            className="btn-primary text-sm sm:text-base lg:text-lg px-4 py-3 sm:px-6 sm:py-4 lg:px-8 lg:py-4 max-w-xs sm:max-w-none mx-auto"
             aria-label="Schedule your free 15-minute consultation"
           >
-            Schedule Free Consultation
+            <span className="block sm:inline">Schedule Free</span>
+            <span className="block sm:inline sm:ml-1">Consultation</span>
           </Link>
         </div>
       </div>
