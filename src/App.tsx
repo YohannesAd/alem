@@ -1,8 +1,9 @@
 
-import { HashRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import { HashRouter as Router, Routes, Route, Navigate, Link } from 'react-router-dom';
 import { Navbar } from './components';
 import { Home, About, Services, Contact } from './pages';
 import { useEffect } from 'react';
+import { useScrollToTop, scrollToTop } from './hooks';
 
 /**
  * Component to handle redirect to hash route if no hash is present
@@ -17,6 +18,14 @@ const HashRedirect = () => {
 };
 
 /**
+ * Component to handle scroll restoration on route changes
+ */
+const ScrollToTopWrapper = ({ children }: { children: React.ReactNode }) => {
+  useScrollToTop();
+  return <>{children}</>;
+};
+
+/**
  * Main App component for Alem Asefa's counseling website
  * Handles routing and layout structure
  */
@@ -24,13 +33,14 @@ function App() {
   return (
     <>
       <HashRedirect />
-      <Router>
-        <div className="min-h-screen bg-white flex flex-col prevent-overflow no-bounce">
+      <Router future={{ v7_startTransition: true }}>
+        <ScrollToTopWrapper>
+          <div className="min-h-screen bg-white flex flex-col prevent-overflow no-bounce">
           {/* Navigation */}
           <Navbar />
 
           {/* Main Content */}
-          <main className="flex-1">
+          <main id="main-content" className="flex-1">
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/about" element={<About />} />
@@ -60,10 +70,74 @@ function App() {
               <div>
                 <h3 className="text-xl font-semibold mb-4">Quick Links</h3>
                 <div className="space-y-2">
-                  <a href="#/about" className="block text-gray-300 hover:text-white transition-colors">About</a>
-                  <a href="#/services" className="block text-gray-300 hover:text-white transition-colors">Services</a>
-                  <a href="#/contact" className="block text-gray-300 hover:text-white transition-colors">Contact</a>
-                  <a href="#/contact" className="block text-primary hover:text-primary-300 transition-colors">Free Consultation</a>
+                  <a
+                    href="#/about#top"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      window.location.href = '#/about';
+                      setTimeout(() => {
+                        const rootElement = document.getElementById('root');
+                        if (rootElement) {
+                          rootElement.scrollTop = 0;
+                        }
+                        window.scrollTo(0, 0);
+                      }, 10);
+                    }}
+                    className="block text-gray-300 hover:text-white transition-colors"
+                  >
+                    About
+                  </a>
+                  <a
+                    href="#/services#top"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      window.location.href = '#/services';
+                      setTimeout(() => {
+                        const rootElement = document.getElementById('root');
+                        if (rootElement) {
+                          rootElement.scrollTop = 0;
+                        }
+                        window.scrollTo(0, 0);
+                      }, 10);
+                    }}
+                    className="block text-gray-300 hover:text-white transition-colors"
+                  >
+                    Services
+                  </a>
+                  <a
+                    href="#/contact#top"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      window.location.href = '#/contact';
+                      setTimeout(() => {
+                        const rootElement = document.getElementById('root');
+                        if (rootElement) {
+                          rootElement.scrollTop = 0;
+                        }
+                        window.scrollTo(0, 0);
+                      }, 10);
+                    }}
+                    className="block text-gray-300 hover:text-white transition-colors"
+                  >
+                    Contact
+                  </a>
+                  <a
+                    href="#/contact#top"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      window.location.href = '#/contact';
+                      setTimeout(() => {
+                        const rootElement = document.getElementById('root');
+                        if (rootElement) {
+                          rootElement.scrollTop = 0;
+                        }
+                        window.scrollTo(0, 0);
+                      }, 10);
+                    }}
+                    className="block text-primary hover:text-primary-300 transition-colors"
+                  >
+                    Free Consultation
+                  </a>
                 </div>
               </div>
 
@@ -87,7 +161,8 @@ function App() {
             </div>
           </div>
         </footer>
-        </div>
+          </div>
+        </ScrollToTopWrapper>
       </Router>
     </>
   );

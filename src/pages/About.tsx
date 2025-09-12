@@ -10,6 +10,8 @@ const About: React.FC = () => {
 
   return (
     <div className="min-h-screen py-12 sm:py-16 lg:py-20 flex flex-col">
+      {/* Scroll target for navigation */}
+      <div id="page-top" style={{ position: 'absolute', top: 0 }}></div>
       <div className="container-custom">
         {/* Header */}
         <div className="text-center mb-16">
