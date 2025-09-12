@@ -1,7 +1,20 @@
 
-import { HashRouter as Router, Routes, Route } from 'react-router-dom';
+import { HashRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import { Navbar } from './components';
 import { Home, About, Services, Contact } from './pages';
+import { useEffect } from 'react';
+
+/**
+ * Component to handle redirect to hash route if no hash is present
+ */
+const HashRedirect = () => {
+  useEffect(() => {
+    if (window.location.hash === '') {
+      window.location.hash = '#/';
+    }
+  }, []);
+  return null;
+};
 
 /**
  * Main App component for Alem Asefa's counseling website
@@ -9,20 +22,23 @@ import { Home, About, Services, Contact } from './pages';
  */
 function App() {
   return (
-    <Router>
-      <div className="min-h-screen bg-white flex flex-col prevent-overflow no-bounce">
-        {/* Navigation */}
-        <Navbar />
+    <>
+      <HashRedirect />
+      <Router>
+        <div className="min-h-screen bg-white flex flex-col prevent-overflow no-bounce">
+          {/* Navigation */}
+          <Navbar />
 
-        {/* Main Content */}
-        <main className="flex-1">
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/about" element={<About />} />
-            <Route path="/services" element={<Services />} />
-            <Route path="/contact" element={<Contact />} />
-          </Routes>
-        </main>
+          {/* Main Content */}
+          <main className="flex-1">
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/about" element={<About />} />
+              <Route path="/services" element={<Services />} />
+              <Route path="/contact" element={<Contact />} />
+              <Route path="*" element={<Navigate to="/" replace />} />
+            </Routes>
+          </main>
 
         {/* Footer */}
         <footer className="bg-text text-white py-12 mt-auto">
@@ -71,8 +87,9 @@ function App() {
             </div>
           </div>
         </footer>
-      </div>
-    </Router>
+        </div>
+      </Router>
+    </>
   );
 }
 
