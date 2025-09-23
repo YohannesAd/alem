@@ -44,7 +44,7 @@ const Navbar: React.FC<NavbarProps> = ({ className = '' }) => {
               className="text-2xl font-bold text-text hover:text-primary transition-colors duration-200"
               aria-label="Alem Asefa Counseling - Home"
             >
-              Alem Asefa
+              Amra Counseling
               <span className="block text-sm font-normal text-text-light">
                 Licensed Clinical Professional Counselor
               </span>
