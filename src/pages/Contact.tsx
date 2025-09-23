@@ -1,4 +1,7 @@
 import React, { useState } from 'react';
+import emailjs from '@emailjs/browser';
+import { emailjsConfig } from '../config/emailjs';
+import type { EmailTemplateParams } from '../config/emailjs';
 
 /**
  * Contact page component for Alem Asefa's counseling website
@@ -17,6 +20,7 @@ const Contact: React.FC = () => {
 
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitMessage, setSubmitMessage] = useState('');
+  const [isError, setIsError] = useState(false);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
@@ -29,11 +33,35 @@ const Contact: React.FC = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
-    
-    // Simulate form submission (replace with actual form handling)
-    setTimeout(() => {
-      setSubmitMessage('Thank you! Your consultation request has been received. I will contact you within 24 hours.');
-      setIsSubmitting(false);
+    setSubmitMessage('');
+    setIsError(false);
+
+    try {
+      // Prepare email template parameters
+      const templateParams: EmailTemplateParams = {
+        from_name: formData.name,
+        from_email: formData.email,
+        phone: formData.phone || 'Not provided',
+        preferred_contact: formData.preferredContact,
+        service_interest: formData.serviceInterest || 'Not specified',
+        consultation_time: formData.consultationTime || 'Not specified',
+        message: formData.message || 'No additional message',
+        to_email: 'alem@amracounseling.com'
+      };
+
+      // Send email using EmailJS
+      await emailjs.send(
+        emailjsConfig.serviceId,
+        emailjsConfig.templateId,
+        templateParams,
+        emailjsConfig.publicKey
+      );
+
+      // Success message
+      setSubmitMessage('Thank you! Your consultation request has been sent successfully. Alem will contact you within 24 hours.');
+      setIsError(false);
+
+      // Reset form
       setFormData({
         name: '',
         email: '',
@@ -43,7 +71,14 @@ const Contact: React.FC = () => {
         message: '',
         consultationTime: ''
       });
-    }, 1000);
+
+    } catch (error) {
+      console.error('Email sending failed:', error);
+      setSubmitMessage('Sorry, there was an error sending your message. Please try calling (571) 576-3057 or emailing alem@amracounseling.com directly.');
+      setIsError(true);
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -153,7 +188,11 @@ const Contact: React.FC = () => {
             </h2>
             
             {submitMessage && (
-              <div className="bg-accent-50 border border-accent text-accent-800 p-4 rounded-lg mb-6">
+              <div className={`p-4 rounded-lg mb-6 ${
+                isError
+                  ? 'bg-red-50 border border-red-300 text-red-800'
+                  : 'bg-green-50 border border-green-300 text-green-800'
+              }`}>
                 {submitMessage}
               </div>
             )}
@@ -226,27 +265,6 @@ const Contact: React.FC = () => {
                   </select>
                 </div>
               </div>
-
-              <div>
-                <label htmlFor="serviceInterest" className="block text-sm font-medium text-text mb-2">
-                  Service of Interest
-                </label>
-                <select
-                  id="serviceInterest"
-                  name="serviceInterest"
-                  value={formData.serviceInterest}
-                  onChange={handleInputChange}
-                  className="w-full px-4 py-3 border border-primary-200 rounded-lg focus:ring-2 focus:ring-primary-300 focus:border-primary-500 transition-colors"
-                >
-                  <option value="">Select a service</option>
-                  <option value="individual">Individual Therapy</option>
-                  <option value="family">Family Counseling</option>
-                  <option value="couples">Couples Therapy</option>
-                  <option value="trauma">Trauma Recovery</option>
-                  <option value="other">Other/Not Sure</option>
-                </select>
-              </div>
-
               <div>
                 <label htmlFor="consultationTime" className="block text-sm font-medium text-text mb-2">
                   Preferred Consultation Time

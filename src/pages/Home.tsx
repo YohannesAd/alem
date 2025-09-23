@@ -18,7 +18,7 @@ const Home: React.FC = () => {
             </h1>
             <p className="text-lg sm:text-xl text-text-light mb-6 sm:mb-8 leading-relaxed px-4 sm:px-0">
               Culturally informed, affirming, and tailored counseling services with Alem Asefa, MS, LCPC.
-              Evidence-based therapy to help you feel less "stuck", gain insight, and learn healthier
+              Evidence based therapy to help you feel less "stuck", gain insight, and learn healthier
               ways of adapting and problem solving.
             </p>
             <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-center">
@@ -63,7 +63,7 @@ const Home: React.FC = () => {
               </div>
               <h3 className="text-xl font-semibold text-text mb-4">Anxiety & Depression</h3>
               <p className="text-text-light">
-                Evidence-based treatment for anxiety disorders, depression, and mood-related challenges using DBT and CBT approaches.
+                Evidence based treatment for anxiety disorders, depression, and mood-related challenges using DBT and CBT approaches.
               </p>
             </div>
 
@@ -76,7 +76,7 @@ const Home: React.FC = () => {
               </div>
               <h3 className="text-xl font-semibold text-text mb-4">Trauma & PTSD</h3>
               <p className="text-text-light">
-                Specialized trauma-informed care for healing from PTSD, C-PTSD, and complex trauma experiences.
+                Specialized trauma informed care for healing from PTSD, C-PTSD, and complex trauma experiences.
               </p>
             </div>
 
