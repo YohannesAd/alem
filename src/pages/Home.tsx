@@ -18,7 +18,7 @@ const Home: React.FC = () => {
             </h1>
             <p className="text-lg sm:text-xl text-text-light mb-6 sm:mb-8 leading-relaxed px-4 sm:px-0">
               Culturally informed, affirming, and tailored counseling services with Alem Asefa, MS, LCPC.
-              Evidence based therapy to help you feel less "stuck", gain insight, and learn healthier
+              Evidence based therapy to help you feel less stuck , gain insight, and learn healthier
               ways of adapting and problem solving.
             </p>
             <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-center">
