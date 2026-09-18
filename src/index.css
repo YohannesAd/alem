@@ -7,33 +7,22 @@
 @layer base {
   html {
     font-family: 'Lato', 'Open Sans', 'Poppins', system-ui, sans-serif;
-    height: 100%;
+    min-height: 100%;
     overflow-x: hidden;
-    /* Prevent elastic/bounce scrolling */
-    overscroll-behavior: none;
-    -webkit-overflow-scrolling: touch;
   }
 
   body {
     @apply bg-white text-text antialiased;
     margin: 0;
     padding: 0;
-    height: 100%;
     min-height: 100vh;
     overflow-x: hidden;
-    position: relative;
-    /* Prevent elastic/bounce scrolling */
-    overscroll-behavior: none;
-    overscroll-behavior-y: none;
-    -webkit-overflow-scrolling: touch;
   }
 
   #root {
     min-height: 100vh;
     display: flex;
     flex-direction: column;
-    /* Prevent elastic/bounce scrolling */
-    overscroll-behavior: none;
   }
 
   h1, h2, h3, h4, h5, h6 {
@@ -60,15 +49,6 @@
     @apply text-primary hover:text-primary-600 transition-colors duration-200;
   }
 
-  /* Global prevention of elastic/bounce scrolling */
-  * {
-    overscroll-behavior: none;
-  }
-
-  /* Specific prevention for common scroll containers */
-  main, section, div {
-    overscroll-behavior-y: none;
-  }
 }
 
 @layer components {
@@ -107,9 +87,6 @@
   .prevent-overflow {
     max-width: 100vw;
     overflow-x: hidden;
-    /* Prevent elastic/bounce scrolling */
-    overscroll-behavior: none;
-    overscroll-behavior-y: none;
   }
 
   /* Ensure proper viewport behavior */
@@ -123,60 +100,6 @@
     transition: all 0.3s ease-in-out;
   }
 
-  /* Prevent elastic scrolling on all elements */
-  .no-bounce {
-    overscroll-behavior: none;
-    overscroll-behavior-y: none;
-    -webkit-overflow-scrolling: touch;
-  }
-
-  /* Fixed positioning for sticky behavior */
-  .fixed-layout {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    overflow-y: auto;
-    overscroll-behavior: none;
-  }
-}
-
-/* Prevent elastic scrolling on mobile devices */
-@media (max-width: 768px) {
-  html {
-    position: fixed;
-    height: 100%;
-    overflow: hidden;
-  }
-
-  body {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    overflow: hidden;
-  }
-
-  #root {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    overflow-y: auto;
-    -webkit-overflow-scrolling: touch;
-    overscroll-behavior: none;
-  }
-}
-
-/* For desktop, just prevent overscroll */
-@media (min-width: 769px) {
-  html, body, #root {
-    overscroll-behavior: none;
-    overscroll-behavior-y: none;
-  }
 }
 
 /* Mobile touch optimizations */
